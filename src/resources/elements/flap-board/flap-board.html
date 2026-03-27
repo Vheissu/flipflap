@@ -1,0 +1,15 @@
+<div class="flap-board">
+  <div
+    class="board-grid"
+    style="grid-template-columns: repeat(${cols}, var(--cell-width));"
+  >
+    <template repeat.for="row of board">
+      <template repeat.for="cell of row">
+        <flap-cell
+          target-char.bind="cell.targetChar"
+          flip-delay.bind="cell.flipDelay"
+        ></flap-cell>
+      </template>
+    </template>
+  </div>
+</div>

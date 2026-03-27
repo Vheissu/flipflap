@@ -1,0 +1,23 @@
+<div class="flap-cell">
+  <div class="flap-container">
+    <!-- Static top: reveals NEXT character as front flap falls away -->
+    <div class="flap-half flap-top">
+      <span class="flap-text">${nextChar}</span>
+    </div>
+
+    <!-- Static bottom: shows CURRENT character -->
+    <div class="flap-half flap-bottom">
+      <span class="flap-text">${currentChar}</span>
+    </div>
+
+    <!-- Animated front flap: falls from top showing CURRENT (old) char -->
+    <div class="flap-half flap-front ${flipActive ? 'is-flipping' : ''}">
+      <span class="flap-text">${currentChar}</span>
+    </div>
+
+    <!-- Animated back flap: rises from bottom showing NEXT (new) char -->
+    <div class="flap-half flap-back ${flipActive ? 'is-flipping' : ''}">
+      <span class="flap-text">${nextChar}</span>
+    </div>
+  </div>
+</div>

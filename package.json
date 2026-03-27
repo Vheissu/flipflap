@@ -1,0 +1,21 @@
+{
+  "name": "flipflap",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "aurelia": "latest",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@aurelia/vite-plugin": "latest",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7",
+    "vite-plugin-node-polyfills": "^0.24.0"
+  }
+}

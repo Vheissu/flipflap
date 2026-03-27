@@ -1,0 +1,3 @@
+export const FLAP_CHARS = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-:;!?\'"@#&()+=/'.split('');
+
+export const CYCLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');

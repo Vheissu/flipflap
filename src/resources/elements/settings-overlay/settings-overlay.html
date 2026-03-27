@@ -1,0 +1,136 @@
+<section
+  class="settings-overlay ${visible ? 'is-visible' : ''}"
+  auto-hide.bind="{ active: visible, delay: 10000 }"
+  auto-hide-expired.trigger="hide()"
+>
+  <div class="settings-backdrop" click.trigger="hide()"></div>
+
+  <div class="settings-panel">
+    <div class="settings-header">
+      <div>
+        <p class="eyebrow">Live Controls</p>
+        <h2>Flipflap Console</h2>
+      </div>
+      <button class="ghost-button" click.trigger="hide()">Close</button>
+    </div>
+
+    <div class="settings-grid">
+      <section class="settings-card">
+        <p class="card-label">Content Modes</p>
+        <label repeat.for="mode of modeOptions" class="toggle-row">
+          <span>
+            <strong>${mode.label}</strong>
+            <small>${mode.description}</small>
+          </span>
+          <input
+            type="checkbox"
+            checked.to-view="isModeEnabled(mode.id)"
+            change.trigger="toggleMode(mode.id, $event)"
+          />
+        </label>
+      </section>
+
+      <section class="settings-card">
+        <p class="card-label">Timing</p>
+        <label class="field">
+          <span>Cycle Duration</span>
+          <strong>${cycleSeconds}s</strong>
+        </label>
+        <input
+          class="range-input"
+          type="range"
+          min="15000"
+          max="120000"
+          step="5000"
+          value.bind="cycleDuration"
+          input.trigger="persistCycleDuration()"
+        />
+
+        <label class="field split-field">
+          <span>Rows</span>
+          <input type="number" min="1" max="12" value.bind="rows" change.trigger="persistBoardSize()" />
+        </label>
+
+        <label class="field split-field">
+          <span>Columns</span>
+          <input type="number" min="12" max="40" value.bind="cols" change.trigger="persistBoardSize()" />
+        </label>
+      </section>
+
+      <section class="settings-card">
+        <p class="card-label">Audio</p>
+        <label class="toggle-row">
+          <span>
+            <strong>Mechanical clack</strong>
+            <small>Web Audio unlocks after the first key press or click.</small>
+          </span>
+          <input
+            type="checkbox"
+            checked.bind="soundEnabled"
+            change.trigger="persistSound()"
+          />
+        </label>
+
+        <label class="field">
+          <span>Volume</span>
+          <strong>${volumePercent}%</strong>
+        </label>
+        <input
+          class="range-input"
+          type="range"
+          min="0"
+          max="1"
+          step="0.05"
+          value.bind="volume"
+          input.trigger="persistSound()"
+        />
+      </section>
+
+      <section class="settings-card">
+        <p class="card-label">Theme</p>
+        <label class="field">
+          <span>Palette</span>
+          <select value.bind="themeId" change.trigger="persistTheme()">
+            <option repeat.for="theme of themes" model.bind="theme.id">${theme.name}</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="settings-card">
+        <p class="card-label">Weather</p>
+        <label class="field">
+          <span>Location</span>
+          <input
+            type="text"
+            placeholder="Brisbane, AU"
+            value.bind="location"
+          />
+        </label>
+        <label class="field">
+          <span>OpenWeatherMap API Key</span>
+          <input
+            type="password"
+            placeholder="Paste API key"
+            value.bind="weatherApiKey"
+          />
+        </label>
+        <button class="primary-button" click.trigger="persistWeather()">Save Weather</button>
+      </section>
+
+      <section class="settings-card settings-card-wide">
+        <p class="card-label">Custom Quotes</p>
+        <label class="field">
+          <span>One per line. Use `quote | author`.</span>
+          <textarea
+            rows="8"
+            placeholder="GOOD THINGS TAKE TIME | CUSTOM&#10;MEASURE TWICE CUT ONCE | WORKSHOP"
+            value.bind="customQuoteDraft"
+          ></textarea>
+        </label>
+        <button class="primary-button" click.trigger="persistQuotes()">Save Quotes</button>
+      </section>
+    </div>
+
+    <p class="settings-status">${statusMessage}</p>
+  </div>
+</section>

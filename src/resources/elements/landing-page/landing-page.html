@@ -1,0 +1,21 @@
+<section class="landing-page ${visible ? 'is-visible' : ''}">
+  <div class="landing-backdrop"></div>
+
+  <div class="landing-panel">
+    <p class="eyebrow">Aurelia 2 Split-Flap Display</p>
+    <h1>Flipflap</h1>
+    <p class="landing-copy">
+      A fullscreen departures-board experience for TVs. Use the board immediately, then open the
+      console to tune content, theme, board size, sound, and weather.
+    </p>
+
+    <div class="landing-features">
+      <div repeat.for="feature of featureList" class="feature-chip">${feature | uppercase}</div>
+    </div>
+
+    <div class="landing-actions">
+      <button class="primary-button" click.trigger="enterDisplay()">Start Display</button>
+      <button class="ghost-button" click.trigger="openSettings()">Open Setup</button>
+    </div>
+  </div>
+</section>

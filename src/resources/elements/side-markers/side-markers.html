@@ -1,0 +1,17 @@
+<div class="side-markers">
+  <div class="marker-strip marker-left">
+    <div
+      repeat.for="color of leftColors"
+      class="marker-block"
+      css="background-color: ${color}; transition-delay: ${$index * 70}ms;"
+    ></div>
+  </div>
+
+  <div class="marker-strip marker-right">
+    <div
+      repeat.for="color of rightColors"
+      class="marker-block"
+      css="background-color: ${color}; transition-delay: ${$index * 70}ms;"
+    ></div>
+  </div>
+</div>
